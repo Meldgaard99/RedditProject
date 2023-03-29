@@ -74,12 +74,12 @@ public string CreatePost(string title, User user, string text, int upvote, int d
 
         }
 
-        public string CreateComment(string text, int upvote, int downvote, int numberOfVotes) {
+        public string CreateComment(string text, int upvote, int downvote, int numberOfVotes, int commentid) {
 
      
           //  Comment newcomment = new Comment(text, downvote, upvote, numberOfVotes);
             //db.Add(newcomment);
-            db.Comments.Add(new Comment(text, downvote, upvote, numberOfVotes));
+            db.Comments.Add(new Comment(text, downvote, upvote, numberOfVotes, commentid));
         
         db.SaveChanges();
         return "Post created";

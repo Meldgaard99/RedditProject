@@ -11,12 +11,13 @@ namespace RedditFullStack.Model
         public int NumberOfVotes { get; set; }
     
 
-    public Comment( string text, int downvote, int upvote, int numberOfVotes){
+    public Comment( string text, int downvote, int upvote, int numberOfVotes, int commentid){
 
         this.Text = text; 
-        this.Downvote = Downvote; 
-        this.Upvote = Upvote;
-        this.NumberOfVotes = NumberOfVotes;
+        this.Downvote = downvote; 
+        this.Upvote = upvote;
+        this.NumberOfVotes = numberOfVotes;
+        this.CommentId = commentid;
 
 
 

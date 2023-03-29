@@ -113,7 +113,7 @@ app.MapPost("/createpost", (DataService service, Post data) =>
      return service.CreatePost(data.Title, data.User, data.Text, data.NumberOfVotes);
  });
 */
-app.Run();
+
 
 
 app.MapPost("/createpost", (DataService service, PostDTO data) =>
@@ -124,7 +124,7 @@ app.MapPost("/createpost", (DataService service, PostDTO data) =>
 
  app.MapPost("/createcomment", (DataService service, CommentDTO data) =>
  {
-     return service.CreateComment(data.text, data.downvote, data.upvote, data.numberOfVotes);
+     return service.CreateComment(data.text, data.downvote, data.upvote, data.numberOfVotes, data.commentid);
 
  });
 
@@ -132,6 +132,6 @@ app.MapPost("/createpost", (DataService service, PostDTO data) =>
 
 app.Run();
  record PostDTO(string title, User user, string text, int upvote, int downvote, int numberOfVotes);
- record CommentDTO(string text, int downvote, int upvote, int numberOfVotes);
+ record CommentDTO(string text, int downvote, int upvote, int numberOfVotes, int commentid);
 
 
