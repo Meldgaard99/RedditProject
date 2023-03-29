@@ -57,6 +57,14 @@ using (var db = new RedditContext())
     }
 
 // Henter alle post
+
+
+app.Use(async (context, next) =>
+{
+    context.Response.ContentType = "application/json; charset=utf-8";
+    await next(context);
+});
+
 app.MapGet("/get/all/posts", (DataService service) =>
 {
     return service.GetAllPosts();

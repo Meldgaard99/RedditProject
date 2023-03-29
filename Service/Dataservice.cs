@@ -76,17 +76,26 @@ public string CreatePost(string title, User user, string text, int upvote, int d
 
         public string CreateComment(string text, int upvote, int downvote, int numberOfVotes) {
 
-       // User tempuser = db.Users.FirstOrDefault(a => a.UserId == user.UserId)!;
-            //db.Users.Add()
-            Comment newcomment = new Comment(text, downvote, upvote, numberOfVotes);
-            db.Add(newcomment);
-           // db.Comments.Add(new Comment(text, downvote, upvote, numberOfVotes));
+     
+          //  Comment newcomment = new Comment(text, downvote, upvote, numberOfVotes);
+            //db.Add(newcomment);
+            db.Comments.Add(new Comment(text, downvote, upvote, numberOfVotes));
         
         db.SaveChanges();
         return "Post created";
         
         }
-      
+        /*
+
+         public Comment PostComments(string text, int upvote, int downvote, int numberOfVotes)
+    {
+            Comment newcomment = new Comment(text, upvote, downvote, numberOfVotes);
+        db.Add(newcomment);
+        db.SaveChanges();
+            return newcomment;
+
+    }
+      */
      
         }
     }  

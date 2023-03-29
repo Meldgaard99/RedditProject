@@ -21,5 +21,9 @@ namespace RedditFullStack.Model
 
 
     }
+    public Comment()
+    {
+
+    }
     }
 }
