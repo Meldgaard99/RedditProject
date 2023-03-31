@@ -3,9 +3,7 @@ using RedditFullStack.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace RedditFullStack.Model{
-
 
 public class DataService
 {
@@ -15,7 +13,6 @@ public class DataService
     public DataService(RedditContext db) {
         this.db = db;
     }
-
 
  public List<Post> GetAllPosts()
     {
@@ -27,7 +24,6 @@ public class DataService
     {
         return db.Comments.ToList();
     }
-
 
     // Henter post på dets id
     public Post GetPostById(int postid)
@@ -43,12 +39,10 @@ public class DataService
         
     }
 
-
  // Henter bruger på dets id
   public User GetUserById(int userid)
     {
         return db.Users.Where(p => p.UserId == userid).FirstOrDefault()!;
-
     }
 
 // Henter alle brugere
@@ -74,17 +68,26 @@ public string CreatePost(string title, User user, string text, int upvote, int d
 
         }
 
-        public string CreateComment(string text, int upvote, int downvote, int numberOfVotes, int commentid) {
 
-     
-          //  Comment newcomment = new Comment(text, downvote, upvote, numberOfVotes);
-            //db.Add(newcomment);
-            db.Comments.Add(new Comment(text, downvote, upvote, numberOfVotes, commentid));
-        
+
+        public string CreateComment(string text, int upvote, int downvote, int numberOfVotes, int postid) {
+        var post = db.Posts.Where(p => p.PostId == postid).FirstOrDefault()!;
+        //db.Add(newcomment);
+        post.Comments.Add(new Comment(text, downvote, upvote, numberOfVotes));
         db.SaveChanges();
-        return "Post created";
+        return "Comment created";
         
         }
+
+        public void SeedData(){
+
+        Comment comment = db.Comments.FirstOrDefault()!;
+        if(comment == null  )
+        {comment = new Comment { CommentId = 1, Text = "Den har åben Torsdag og fredag fra kl 12", Downvote = 3, Upvote = 5, NumberOfVotes = 8 };
+        db.Add(comment);
+        //db.Add(new Comment{ Text = "Hvornår slutter påskeferien?" }); 
+        db.SaveChanges();}
+
         /*
 
          public Comment PostComments(string text, int upvote, int downvote, int numberOfVotes)
@@ -93,11 +96,10 @@ public string CreatePost(string title, User user, string text, int upvote, int d
         db.Add(newcomment);
         db.SaveChanges();
             return newcomment;
-
     }
       */
      
         }
     }  
 
-  
+}

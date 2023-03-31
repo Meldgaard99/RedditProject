@@ -6,7 +6,7 @@ namespace RedditFullStack.Model
 {
     public class Post
     {
-        public int PostId { get; set; }
+        public int PostId { get; set; }        
         public string Title { get; set; }
         //[ForeignKey("User")]
         public User User { get; set; }
@@ -14,11 +14,10 @@ namespace RedditFullStack.Model
         public int Downvote { get; set; }
         public int Upvote { get; set; }
         public int NumberOfVotes { get; set; }
+        public List<Comment> Comments {get; set;} = new List<Comment>();
 
-        //public List<Comment> Comments {get; set;} new List<Comment>();
-    
 
-    public Post(string title, User user, string text, int upvote, int downvote, int numberOfVotes ){
+    public Post(string title, User user, string text, int upvote, int downvote, int numberOfVotes){
 
         this.Title = title;
         this.User = user;

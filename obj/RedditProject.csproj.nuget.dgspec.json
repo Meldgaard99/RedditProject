@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/RedditProject.csproj": {}
+    "/Users/marie-louise/Desktop/RedditProject/RedditProject.csproj": {}
   },
   "projects": {
-    "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/RedditProject.csproj": {
+    "/Users/marie-louise/Desktop/RedditProject/RedditProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/RedditProject.csproj",
+        "projectUniqueName": "/Users/marie-louise/Desktop/RedditProject/RedditProject.csproj",
         "projectName": "RedditProject",
-        "projectPath": "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/RedditProject.csproj",
-        "packagesPath": "/Users/rasmusmeldgaardjensen/.nuget/packages/",
-        "outputPath": "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/obj/",
+        "projectPath": "/Users/marie-louise/Desktop/RedditProject/RedditProject.csproj",
+        "packagesPath": "/Users/marie-louise/.nuget/packages/",
+        "outputPath": "/Users/marie-louise/Desktop/RedditProject/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/rasmusmeldgaardjensen/.nuget/NuGet/NuGet.Config"
+          "/Users/marie-louise/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"

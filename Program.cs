@@ -35,6 +35,12 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseCors(AllowSomeStuff);
 
+using (var scope = app.Services.CreateScope())
+{
+    var dataService = scope.ServiceProvider.GetRequiredService<DataService>();
+    dataService.SeedData(); // Fylder data på, hvis databasen er tom. Ellers ikke.
+}
+
 using (var db = new RedditContext())
 {
     Console.WriteLine($"Database path: {db.DbPath}.");
@@ -105,17 +111,6 @@ app.MapGet("/get/all/users", (DataService service) =>
     Console.WriteLine("Find det sidste task");
     
 
-//app.MapGet("/", () => "Hello World!");
-
-/* Udkast til post post
-app.MapPost("/createpost", (DataService service, Post data) =>
- {
-     return service.CreatePost(data.Title, data.User, data.Text, data.NumberOfVotes);
- });
-*/
-
-
-
 app.MapPost("/createpost", (DataService service, PostDTO data) =>
  {
      return service.CreatePost(data.title, data.user, data.text, data.upvote, data.downvote, data.numberOfVotes);
@@ -127,6 +122,8 @@ app.MapPost("/createpost", (DataService service, PostDTO data) =>
      return service.CreateComment(data.text, data.downvote, data.upvote, data.numberOfVotes, data.commentid);
 
  });
+
+
 
 
 
