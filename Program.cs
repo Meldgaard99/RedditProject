@@ -47,19 +47,19 @@ using (var db = new RedditContext())
 
     var newuser = new User( "Rasmus");
 
-    // Create
+    /*// Create
     Console.WriteLine("Submitting data to DB");
     db.Add(new Post("Titel",newuser, "test text", 2, 4, 5)); //Test om der er hul til post tablen!
     db.Add(new User( "Mads"));
-    db.SaveChanges();
+    db.SaveChanges();*/
 
-    /*// Delete
+    // Delete
     Console.WriteLine("Slet post");
     //var Post= db.Posts.OrderBy(b => b.PostId).Last();
     //Console.WriteLine("Slet task");
     //db.Posts.Remove(Post);
     db.SaveChanges();
-*/
+
     }
 
 // Henter alle post
@@ -119,16 +119,31 @@ app.MapPost("/createpost", (DataService service, PostDTO data) =>
 
  app.MapPost("/createcomment", (DataService service, CommentDTO data) =>
  {
-     return service.CreateComment(data.text, data.downvote, data.upvote, data.numberOfVotes, data.commentid);
+     return service.CreateComment(data.text, data.downvote, data.upvote, data.numberOfVotes, data.postid, data.user);
 
  });
 
 
+app.MapPut("/PostVote", (DataService service, PostVoteDTO data) =>
+
+{
+return service.PostVoting(data.postId, data.user, data.UpvoteOrDownvote);
+
+});
 
 
+app.MapPut("/CommentVote", (DataService service, CommentVoteDTO data) =>
+
+{
+return service.CommentVoting(data.commentId, data.user, data.UpvoteOrDownvote);
+
+});
 
 app.Run();
- record PostDTO(string title, User user, string text, int upvote, int downvote, int numberOfVotes);
- record CommentDTO(string text, int downvote, int upvote, int numberOfVotes, int commentid);
+
+record PostDTO(string title, User user, string text, int upvote, int downvote, int numberOfVotes);
+record CommentDTO(string text, int downvote, int upvote, int numberOfVotes, int postid, User user);
+record PostVoteDTO(int postId, User user, bool UpvoteOrDownvote);
+record CommentVoteDTO(int commentId, User user, bool UpvoteOrDownvote);
 
 

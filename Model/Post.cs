@@ -38,4 +38,11 @@ namespace RedditFullStack.Model
 
     }
     }
-}
+
+
+/*public override string ToString()
+    {
+        return $"Id: {PostId}, Title: {Title}, User: {User}, Text: {Text}, Upvotes: {Upvotes}, Downvotes: {Downvotes}, NumberOfVotes: {NumberOfVotes}";
+    }*/
+
+    }

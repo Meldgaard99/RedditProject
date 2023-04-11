@@ -9,14 +9,17 @@ namespace RedditFullStack.Model
         public int Downvote { get; set; }
         public int Upvote { get; set; }
         public int NumberOfVotes { get; set; }
+
+        public User User { get; set;}
     
 
-    public Comment( string text, int downvote, int upvote, int numberOfVotes){
+    public Comment( string text, int downvote, int upvote, int numberOfVotes, User user){
 
         this.Text = text; 
         this.Downvote = downvote; 
         this.Upvote = upvote;
         this.NumberOfVotes = numberOfVotes;
+        this.User = user;
 
     }
     public Comment()
@@ -26,6 +29,7 @@ namespace RedditFullStack.Model
         Downvote = 0;
         Upvote = 0;
         NumberOfVotes = 0;
+        User = null;
     }
     }
 }
