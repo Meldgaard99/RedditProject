@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RedditFullStack.Model;
 
@@ -10,9 +11,11 @@ using RedditFullStack.Model;
 namespace RedditProject.Migrations
 {
     [DbContext(typeof(RedditContext))]
-    partial class RedditContextModelSnapshot : ModelSnapshot
+    [Migration("20230411184141_rasmus-test")]
+    partial class rasmustest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
@@ -39,14 +42,9 @@ namespace RedditProject.Migrations
                     b.Property<int>("Upvote")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("CommentId");
 
                     b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -62,9 +60,6 @@ namespace RedditProject.Migrations
 
                     b.Property<int>("NumberOfVotes")
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("PostTime")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Text")
                         .IsRequired()
@@ -93,11 +88,16 @@ namespace RedditProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("CommentId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("UserId");
+
+                    b.HasIndex("CommentId");
 
                     b.ToTable("Users");
                 });
@@ -107,14 +107,6 @@ namespace RedditProject.Migrations
                     b.HasOne("RedditFullStack.Model.Post", null)
                         .WithMany("Comments")
                         .HasForeignKey("PostId");
-
-                    b.HasOne("RedditFullStack.Model.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RedditFullStack.Model.Post", b =>
@@ -126,6 +118,18 @@ namespace RedditProject.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RedditFullStack.Model.User", b =>
+                {
+                    b.HasOne("RedditFullStack.Model.Comment", null)
+                        .WithMany("users")
+                        .HasForeignKey("CommentId");
+                });
+
+            modelBuilder.Entity("RedditFullStack.Model.Comment", b =>
+                {
+                    b.Navigation("users");
                 });
 
             modelBuilder.Entity("RedditFullStack.Model.Post", b =>

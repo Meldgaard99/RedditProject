@@ -5,10 +5,11 @@ namespace RedditFullStack.Model
     {
         public int CommentId { get; set; }
         public string Text { get; set; }
-        //public EF kræver en id til at identificere primary keys! :)
+        
         public int Downvote { get; set; }
         public int Upvote { get; set; }
         public int NumberOfVotes { get; set; }
+
 
         public User User { get; set;}
     
@@ -22,6 +23,8 @@ namespace RedditFullStack.Model
         this.User = user;
 
     }
+
+    //Der er blevet brugt 2 constructer, fordi det gør det nemmere i forhold til JSON 
     public Comment()
     {
         CommentId = 0;
@@ -30,6 +33,7 @@ namespace RedditFullStack.Model
         Upvote = 0;
         NumberOfVotes = 0;
         User = null;
+
     }
     }
 }

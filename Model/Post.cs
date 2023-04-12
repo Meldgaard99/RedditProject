@@ -8,16 +8,18 @@ namespace RedditFullStack.Model
     {
         public int PostId { get; set; }        
         public string Title { get; set; }
-        //[ForeignKey("User")]
+        
         public User User { get; set; }
         public string Text { get; set; }
         public int Downvote { get; set; }
         public int Upvote { get; set; }
         public int NumberOfVotes { get; set; }
+
+        public DateTime PostTime { get; set; }
         public List<Comment> Comments {get; set;} = new List<Comment>();
 
 
-    public Post(string title, User user, string text, int upvote, int downvote, int numberOfVotes){
+    public Post(string title, User user, string text, int upvote, int downvote, int numberOfVotes, DateTime postTime){
 
         this.Title = title;
         this.User = user;
@@ -25,8 +27,10 @@ namespace RedditFullStack.Model
         this.Upvote = upvote;
         this.Downvote = downvote;
         this.NumberOfVotes = numberOfVotes;
+        this.PostTime = postTime;
 
     }
+    //Der er blevet brugt 2 constructer, fordi det gør det nemmere i forhold til JSON 
 
     public Post() {
         PostId = 0;
@@ -35,6 +39,8 @@ namespace RedditFullStack.Model
         Text= "";
         Upvote= 0;
         Downvote = 0;
+
+
 
     }
     }

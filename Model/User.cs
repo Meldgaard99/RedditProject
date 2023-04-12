@@ -2,7 +2,7 @@ using System;
 
 namespace RedditFullStack.Model
 {
-    
+
 	public class User
 	{
 		public int UserId { get; set; }
