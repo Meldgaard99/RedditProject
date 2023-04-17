@@ -18,7 +18,6 @@ builder.Services.AddCors(options =>
 });
 
 
-
 // Tilføj DbContext factory som service.
 builder.Services.AddDbContext<RedditContext>(options =>
   options.UseSqlite(builder.Configuration.GetConnectionString("ContextSQLite")));
@@ -26,7 +25,6 @@ builder.Services.AddDbContext<RedditContext>(options =>
 
 // Tilføj DataService så den kan bruges i endpoints
 builder.Services.AddScoped<DataService>();
-
 
 
 var app = builder.Build();
@@ -47,7 +45,6 @@ using (var db = new RedditContext())
 }
 
 // Henter alle post
-
 
 app.Use(async (context, next) =>
 {

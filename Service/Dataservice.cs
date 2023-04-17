@@ -6,7 +6,6 @@ using System.Linq;
 
 namespace RedditFullStack.Model
 {
-
     public class DataService
     {
 
@@ -19,13 +18,9 @@ namespace RedditFullStack.Model
 
         public List<Post> GetAllPosts()
         {
-
             {
-
                 return db.Posts.Include(p => p.User).Include(p => p.Comments).ToList();
-
             }
-
         }
         //Husk include
         //Where også hvad den skal include
@@ -37,15 +32,14 @@ namespace RedditFullStack.Model
         // Henter post på dets id
         public Post GetPostById(int postid)
         {
-            return db.Posts.Where(p => p.PostId == postid).FirstOrDefault()!;
-
+            return db.Posts.Where(p => p.PostId == postid)
+            .Include(p => p.Comments).FirstOrDefault()!;
         }
 
         // Henter kommentaren på dets id
         public Comment GetCommentById(int commentid)
         {
             return db.Comments.Where(p => p.CommentId == commentid).FirstOrDefault()!;
-
         }
 
         // Henter bruger på dets id
@@ -61,7 +55,7 @@ namespace RedditFullStack.Model
         }
 
 
-        // Udkast til post post
+        // Create post
         public string CreatePost(string title, User user, string text, int upvote, int downvote, int numberOfVotes, DateTime postTime)
         {
 
@@ -91,8 +85,6 @@ namespace RedditFullStack.Model
             db.SaveChanges();
             return "Comment created";
         }
-
-
 
 
         public bool PostVoting(int postId, User user, bool UpvoteOrDownvote)
@@ -146,7 +138,6 @@ namespace RedditFullStack.Model
                 var comment = db.Comments.FirstOrDefault(p => p.CommentId == commentId);
                 if (comment == null)
                 {
-
                     return false;
                 }
 
