@@ -52,37 +52,37 @@ app.Use(async (context, next) =>
     await next(context);
 });
 
-app.MapGet("/get/all/posts", (DataService service) =>
+app.MapGet("/all/posts", (DataService service) =>
 {
     return service.GetAllPosts();
 });
 
 // Henter post på dets id
-app.MapGet("/get/post/{postid}", (DataService service, int postid) =>
+app.MapGet("/post/{postid}", (DataService service, int postid) =>
 {
     return service.GetPostById(postid);  
 });
 
 // Henter alle kommentarer
-app.MapGet("/get/all/comments", (DataService service) =>
+app.MapGet("/all/comments", (DataService service) =>
 {
     return service.GetAllComments();
 });
 
 // Henter en kommmentar på dets id
-app.MapGet("/get/comment/{commentid}", (DataService service, int commentid) =>
+app.MapGet("/comment/{commentid}", (DataService service, int commentid) =>
 {
     return service.GetCommentById(commentid);  
 });
 
 // Henter user på bruger id
-app.MapGet("/get/user/{userid}", (DataService service, int userid) =>
+app.MapGet("/user/{userid}", (DataService service, int userid) =>
 {
     return service.GetUserById(userid);  
 });
 
 // Henter alle brugere
-app.MapGet("/get/all/users", (DataService service) =>
+app.MapGet("/all/users", (DataService service) =>
 {
     return service.GetAllUsers();
 });
