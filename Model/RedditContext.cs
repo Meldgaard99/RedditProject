@@ -33,7 +33,6 @@ namespace RedditFullStack.Model
         {
             modelBuilder.Entity<Post>().ToTable("Post");
 
-
         }
     }
 }

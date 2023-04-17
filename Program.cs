@@ -17,7 +17,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 // Tilføj DbContext factory som service.
 builder.Services.AddDbContext<RedditContext>(options =>
   options.UseSqlite(builder.Configuration.GetConnectionString("ContextSQLite")));
@@ -26,9 +25,7 @@ builder.Services.AddDbContext<RedditContext>(options =>
 // Tilføj DataService så den kan bruges i endpoints
 builder.Services.AddScoped<DataService>();
 
-
 var app = builder.Build();
-
 
 app.UseHttpsRedirection();
 app.UseCors(AllowSomeStuff);
@@ -36,7 +33,7 @@ app.UseCors(AllowSomeStuff);
 using (var scope = app.Services.CreateScope())
 {
     var dataService = scope.ServiceProvider.GetRequiredService<DataService>();
-   // dataService.SeedData(); // Fylder data på, hvis databasen er tom. Ellers ikke.
+   // dataService.SeedData(); Fylder data på, hvis databasen er tom. Ellers ikke.
 }
 
 using (var db = new RedditContext())
@@ -86,25 +83,21 @@ app.MapGet("/all/users", (DataService service) =>
 {
     return service.GetAllUsers();
 });
-
-
-// Read
-    Console.WriteLine("Find det sidste task");
-    
-
+ 
+// Laver et post
 app.MapPost("/createpost", (DataService service, PostDTO data) =>
  {
      return service.CreatePost(data.title, data.user, data.text, data.upvote, data.downvote, data.numberOfVotes, data.postTime);
  });
 
-
+// Laver en kommentar
  app.MapPost("/createcomment", (DataService service, CommentDTO data) =>
  {
      return service.CreateComment(data.text, data.downvote, data.upvote, data.numberOfVotes, data.postid, data.user, data.commentTime);
 
  });
 
-
+// Laver en vote på post
 app.MapPut("/PostVote", (DataService service, PostVoteDTO data) =>
 
 {
@@ -112,7 +105,7 @@ return service.PostVoting(data.postId, data.user, data.UpvoteOrDownvote);
 
 });
 
-
+// Laver en vote på comment
 app.MapPut("/CommentVote", (DataService service, CommentVoteDTO data) =>
 
 {

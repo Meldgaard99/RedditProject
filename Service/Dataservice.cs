@@ -8,7 +8,6 @@ namespace RedditFullStack.Model
 {
     public class DataService
     {
-
         private RedditContext db { get; }
 
         public DataService(RedditContext db)
@@ -22,8 +21,7 @@ namespace RedditFullStack.Model
                 return db.Posts.Include(p => p.User).Include(p => p.Comments).ToList();
             }
         }
-        //Husk include
-        //Where også hvad den skal include
+        
         public List<Comment> GetAllComments()
         {
             return db.Comments.ToList();
@@ -54,7 +52,6 @@ namespace RedditFullStack.Model
             return db.Users.ToList();
         }
 
-
         // Create post
         public string CreatePost(string title, User user, string text, int upvote, int downvote, int numberOfVotes, DateTime postTime)
         {
@@ -73,6 +70,7 @@ namespace RedditFullStack.Model
 
         }
 
+        // Create comment
         public string CreateComment(string text, int upvote, int downvote, int numberOfVotes, int postid, User user, DateTime CommentTime)
         {
             var post = db.Posts.Where(p => p.PostId == postid).FirstOrDefault();
@@ -86,7 +84,6 @@ namespace RedditFullStack.Model
             return "Comment created";
         }
 
-
         public bool PostVoting(int postId, User user, bool UpvoteOrDownvote)
         {
             {
@@ -99,19 +96,16 @@ namespace RedditFullStack.Model
                 }
 
                 // Hvis UpvoteOrDownvote er sat som true upvote
-                // mulig implementering af at add en user til en liste, så personen ikke kan vote flere gange 
 
                 if (UpvoteOrDownvote == true)
                 {
                     post.Upvote++;
                     post.NumberOfVotes++;
-                    // post.UserVotes.Add(tempUser);
                     db.SaveChanges();
 
                     return true;
 
                     // Hvis UpvoteOrDownvote er sat som false downvote
-                    // mulig implementering af at fjerne en user fra en liste, 
                 }
                 else if (UpvoteOrDownvote == false)
                 {
@@ -142,26 +136,21 @@ namespace RedditFullStack.Model
                 }
 
                 // Hvis UpvoteOrDownvote er sat som true upvote
-                // mulig implementering af at add en user til en liste, så personen ikke kan vote flere gange 
 
                 if (UpvoteOrDownvote == true)
                 {
                     comment.Upvote++;
                     comment.NumberOfVotes++;
-                    // post.UserVotes.Add(tempUser);
                     db.SaveChanges();
 
                     return true;
 
                     // Hvis UpvoteOrDownvote er sat som false downvote
-                    // mulig implementering af at fjerne en user fra en liste, 
                 }
                 else if (UpvoteOrDownvote == false)
                 {
                     comment.Downvote--;
                     comment.NumberOfVotes++;
-
-                    //post.UserVotes.Remove(tempUser);
                     db.SaveChanges();
                     return false;
                 }
@@ -180,7 +169,6 @@ namespace RedditFullStack.Model
                 post = new Post { PostId = 1, Title = "Basement åbningstider?", User = user1, Text = "Hvornår har basement åben?", Downvote = 0, Upvote = 10, NumberOfVotes = 10 };
                 db.Add(post);
                 db.SaveChanges();
-                //db.Posts.Add(new Post(1, "Basement åbningstider?",user1, "Hvornår har basement åben?", 0, 10, 10, DateTime.Now));
             }
             Comment comment = db.Comments.FirstOrDefault()!;
             if (comment == null)

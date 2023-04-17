@@ -8,7 +8,6 @@ namespace RedditFullStack.Model
     {
         public int PostId { get; set; }        
         public string Title { get; set; }
-        //[ForeignKey("User")]
         public User User { get; set; }
         public string Text { get; set; }
         public int Downvote { get; set; }
@@ -31,6 +30,7 @@ namespace RedditFullStack.Model
 
     }
 
+    // Der er lavet to constructors da der ellers kan opstå konflikter mellem datatyper
     public Post() {
         PostId = 0;
         Title = "";

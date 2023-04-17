@@ -12,17 +12,18 @@ namespace RedditFullStack.Model
          public DateTime CommentTime { get; set;}
     
 
-    public Comment( string text, int downvote, int upvote, int numberOfVotes, User user, DateTime commenTime){
+    public Comment( string text, int downvote, int upvote, int numberOfVotes, User user, DateTime commentTime){
 
         this.Text = text; 
         this.Downvote = downvote; 
         this.Upvote = upvote;
         this.NumberOfVotes = numberOfVotes;
         this.User = user;
-        this.CommentTime = commenTime;
+        this.CommentTime = commentTime;
 
 
     }
+    // Der er lavet to constructors da der ellers kan opstå konflikter mellem datatyper
     public Comment()
     {
         CommentId = 0;
