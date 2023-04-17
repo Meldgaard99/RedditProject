@@ -38,29 +38,13 @@ app.UseCors(AllowSomeStuff);
 using (var scope = app.Services.CreateScope())
 {
     var dataService = scope.ServiceProvider.GetRequiredService<DataService>();
-    dataService.SeedData(); // Fylder data på, hvis databasen er tom. Ellers ikke.
+   // dataService.SeedData(); // Fylder data på, hvis databasen er tom. Ellers ikke.
 }
 
 using (var db = new RedditContext())
 {
-    Console.WriteLine($"Database path: {db.DbPath}.");
-
-    var newuser = new User( "Rasmus");
-
-    /*// Create
-    Console.WriteLine("Submitting data to DB");
-    db.Add(new Post("Titel",newuser, "test text", 2, 4, 5)); //Test om der er hul til post tablen!
-    db.Add(new User( "Mads"));
-    db.SaveChanges();*/
-
-    // Delete
-    Console.WriteLine("Slet post");
-    //var Post= db.Posts.OrderBy(b => b.PostId).Last();
-    //Console.WriteLine("Slet task");
-    //db.Posts.Remove(Post);
-    db.SaveChanges();
-
-    }
+  
+}
 
 // Henter alle post
 
@@ -113,13 +97,13 @@ app.MapGet("/get/all/users", (DataService service) =>
 
 app.MapPost("/createpost", (DataService service, PostDTO data) =>
  {
-     return service.CreatePost(data.title, data.user, data.text, data.upvote, data.downvote, data.numberOfVotes);
+     return service.CreatePost(data.title, data.user, data.text, data.upvote, data.downvote, data.numberOfVotes, data.postTime);
  });
 
 
  app.MapPost("/createcomment", (DataService service, CommentDTO data) =>
  {
-     return service.CreateComment(data.text, data.downvote, data.upvote, data.numberOfVotes, data.postid, data.user);
+     return service.CreateComment(data.text, data.downvote, data.upvote, data.numberOfVotes, data.postid, data.user, data.commentTime);
 
  });
 
@@ -141,8 +125,8 @@ return service.CommentVoting(data.commentId, data.user, data.UpvoteOrDownvote);
 
 app.Run();
 
-record PostDTO(string title, User user, string text, int upvote, int downvote, int numberOfVotes);
-record CommentDTO(string text, int downvote, int upvote, int numberOfVotes, int postid, User user);
+record PostDTO(string title, User user, string text, int upvote, int downvote, int numberOfVotes, DateTime postTime);
+record CommentDTO(string text, int downvote, int upvote, int numberOfVotes, int postid, User user, DateTime commentTime);
 record PostVoteDTO(int postId, User user, bool UpvoteOrDownvote);
 record CommentVoteDTO(int commentId, User user, bool UpvoteOrDownvote);
 

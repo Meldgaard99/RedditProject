@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rasmusmeldgaardjensen/RedditProject/RedditProject.csproj": {}
+    "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/RedditProject.csproj": {}
   },
   "projects": {
-    "/Users/rasmusmeldgaardjensen/RedditProject/RedditProject.csproj": {
+    "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/RedditProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rasmusmeldgaardjensen/RedditProject/RedditProject.csproj",
+        "projectUniqueName": "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/RedditProject.csproj",
         "projectName": "RedditProject",
-        "projectPath": "/Users/rasmusmeldgaardjensen/RedditProject/RedditProject.csproj",
+        "projectPath": "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/RedditProject.csproj",
         "packagesPath": "/Users/rasmusmeldgaardjensen/.nuget/packages/",
-        "outputPath": "/Users/rasmusmeldgaardjensen/RedditProject/obj/",
+        "outputPath": "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rasmusmeldgaardjensen/.nuget/NuGet/NuGet.Config"

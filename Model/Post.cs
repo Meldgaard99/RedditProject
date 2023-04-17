@@ -8,13 +8,13 @@ namespace RedditFullStack.Model
     {
         public int PostId { get; set; }        
         public string Title { get; set; }
-        
+        //[ForeignKey("User")]
         public User User { get; set; }
         public string Text { get; set; }
         public int Downvote { get; set; }
         public int Upvote { get; set; }
         public int NumberOfVotes { get; set; }
-
+        
         public DateTime PostTime { get; set; }
         public List<Comment> Comments {get; set;} = new List<Comment>();
 
@@ -30,7 +30,6 @@ namespace RedditFullStack.Model
         this.PostTime = postTime;
 
     }
-    //Der er blevet brugt 2 constructer, fordi det gør det nemmere i forhold til JSON 
 
     public Post() {
         PostId = 0;
@@ -39,16 +38,11 @@ namespace RedditFullStack.Model
         Text= "";
         Upvote= 0;
         Downvote = 0;
+        PostTime = DateTime.Now;
+
+    }
 
 
 
     }
-    }
-
-
-/*public override string ToString()
-    {
-        return $"Id: {PostId}, Title: {Title}, User: {User}, Text: {Text}, Upvotes: {Upvotes}, Downvotes: {Downvotes}, NumberOfVotes: {NumberOfVotes}";
-    }*/
-
-    }
+}

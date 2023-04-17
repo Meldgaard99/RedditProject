@@ -11,8 +11,8 @@ using RedditFullStack.Model;
 namespace RedditProject.Migrations
 {
     [DbContext(typeof(RedditContext))]
-    [Migration("20230411155021_EightCreate")]
-    partial class EightCreate
+    [Migration("20230413195011_ProductionReady")]
+    partial class ProductionReady
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,9 @@ namespace RedditProject.Migrations
                     b.Property<int>("CommentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CommentTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Downvote")
                         .HasColumnType("INTEGER");
@@ -65,6 +68,9 @@ namespace RedditProject.Migrations
 
                     b.Property<int>("NumberOfVotes")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("PostTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Text")
                         .IsRequired()

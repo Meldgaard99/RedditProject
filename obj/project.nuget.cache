@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0jV9Yn3ysgW0bMBjB5p659L3F/Kz/fzabrrqbORJlQM/Vk8k54kdKprKfxJB0vOA1qJiH2SdJ7BFnOZ/J0+Krw==",
+  "dgSpecHash": "kziLkYfazbymlcbk0bloSTWeqiv06uUx+UBrfEzBjOiDKM08ntoaEWLJLPAI5hKRrGKrwIsjh7ENjZ/47KWfWQ==",
   "success": true,
-  "projectFilePath": "/Users/rasmusmeldgaardjensen/RedditProject/RedditProject.csproj",
+  "projectFilePath": "/Users/rasmusmeldgaardjensen/Desktop/Programmering-it/RedditProject/RedditProject.csproj",
   "expectedPackageFiles": [
     "/Users/rasmusmeldgaardjensen/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/rasmusmeldgaardjensen/.nuget/packages/microsoft.data.sqlite.core/7.0.4/microsoft.data.sqlite.core.7.0.4.nupkg.sha512",

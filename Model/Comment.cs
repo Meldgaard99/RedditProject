@@ -5,26 +5,24 @@ namespace RedditFullStack.Model
     {
         public int CommentId { get; set; }
         public string Text { get; set; }
-        
         public int Downvote { get; set; }
         public int Upvote { get; set; }
         public int NumberOfVotes { get; set; }
-
-
         public User User { get; set;}
+         public DateTime CommentTime { get; set;}
     
 
-    public Comment( string text, int downvote, int upvote, int numberOfVotes, User user){
+    public Comment( string text, int downvote, int upvote, int numberOfVotes, User user, DateTime commenTime){
 
         this.Text = text; 
         this.Downvote = downvote; 
         this.Upvote = upvote;
         this.NumberOfVotes = numberOfVotes;
         this.User = user;
+        this.CommentTime = commenTime;
+
 
     }
-
-    //Der er blevet brugt 2 constructer, fordi det gør det nemmere i forhold til JSON 
     public Comment()
     {
         CommentId = 0;
@@ -32,8 +30,6 @@ namespace RedditFullStack.Model
         Downvote = 0;
         Upvote = 0;
         NumberOfVotes = 0;
-        User = null;
-
     }
     }
 }

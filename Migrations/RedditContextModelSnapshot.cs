@@ -23,6 +23,9 @@ namespace RedditProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("CommentTime")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Downvote")
                         .HasColumnType("INTEGER");
 
